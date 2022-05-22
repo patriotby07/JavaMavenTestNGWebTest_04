@@ -46,7 +46,7 @@ public class WebTests {
         String driverPath = "C:\\Users\\patri\\Downloads\\driver_Chrome" +
                 "\\chromedriver.exe";
         String url = "http://www.99-bottles-of-beer.net/";
-        String expectedResult = "Submit new Language";
+        String expectedResult = "SUBMIT NEW LANGUAGE";
 
         System.setProperty(chromeDriver, driverPath);
         WebDriver driver = new ChromeDriver();
@@ -60,7 +60,7 @@ public class WebTests {
 
         String actualResult = menuItems.getText();
 
-        Assert.assertTrue(actualResult.equalsIgnoreCase(expectedResult));
+        Assert.assertEquals(actualResult, expectedResult);
 
         driver.quit();
     }
@@ -75,7 +75,7 @@ public class WebTests {
         String driverPath = "C:\\Users\\patri\\Downloads\\driver_Chrome" +
                 "\\chromedriver.exe";
         String url = "http://www.99-bottles-of-beer.net/";
-        String expectedResult = "Submit New Language";
+        String expectedResult = "Submit new Language";
 
         System.setProperty(chromeDriver, driverPath);
         WebDriver driver = new ChromeDriver();
@@ -91,12 +91,11 @@ public class WebTests {
         WebElement submitNewLanguage = driver.findElement(
                 By.xpath("//body/div[@id='wrap']/div[@id='navigation']" +
                         "/ul[@id='submenu']/li/a[@href='./submitnewlanguage.html']")
-                //body/div[@id='wrap']/div[@id='navigation']/ul[@id='submenu']/li/a[text()='Submit New Language'] ! вариант № 2 !
         );
 
         String actualResult = submitNewLanguage.getText();
 
-        Assert.assertEquals(actualResult, expectedResult);
+        Assert.assertTrue(actualResult.equalsIgnoreCase(expectedResult));
 
         driver.quit();
     }
@@ -163,7 +162,7 @@ public class WebTests {
         driver.get(url);
 
         driver.findElement(
-                By.xpath("//body//ul[@id='submenu']//a[text()='Team']")).click();
+                By.xpath("//a[@href='team.html']")).click();
 
         String[] actualResult = new String[3];
 
